@@ -4,6 +4,7 @@ public class TrackerMenu
 {
     public static string MainMenu()
     {
+        Console.Clear();
         Console.WriteLine("Welcome to the Habit Tracker!");
         Console.WriteLine("Please select an option:");
         Console.WriteLine("1. Add a habit");
@@ -17,6 +18,7 @@ public class TrackerMenu
 
     public static string ManageHabitsMenu(List<Habit> list)
     {
+        Console.Clear();
         Console.WriteLine("Please select the habit:");
         for (int i = 0; i < list.Count; i++)
         {
@@ -30,6 +32,7 @@ public class TrackerMenu
 
     public static string HabitMenu(Habit habit)
     {
+        Console.Clear();
         Console.WriteLine($"Welcome to the {habit.Name} habit!");
         Console.WriteLine("Please select an option:");
         Console.WriteLine("1. Add Entry");
@@ -58,5 +61,3 @@ public class TrackerMenu
         return option;
     }
 }
-
-

@@ -55,7 +55,8 @@ public class Tracker
         while (true)
         {
 
-            switch (TrackerMenu.MainMenu())
+            string option = TrackerMenu.MainMenu();
+            switch (option)
             {
                 case "1":
                     AddHabit();
@@ -69,8 +70,10 @@ public class Tracker
                 case "4":
                     ViewHabitsList();
                     break;
-                //case "0":
-                //    return;
+                case "0":
+                    Console.WriteLine("Thank you for using the Habit Tracker!\nGood Bye!");
+
+                    return;
                 default:
                     Console.WriteLine("Please enter a valid input!");
                     break;
@@ -86,12 +89,15 @@ public class Tracker
             Console.WriteLine("No habits to show!");
             return;
         }
+        Console.Clear();
         Console.WriteLine("Habits List:");
         for (int i = 0; i < _habitsList.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {_habitsList[i].Name}");
         }
-        Console.WriteLine("----------------------------------------------------");
+        Console.WriteLine("------------------------------------");
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
     }
 
     public List<Habit> GetListFromDb()
@@ -217,7 +223,7 @@ public class Tracker
 
     private void ViewAllEntries(Habit habit)
     {
-
+        Console.Clear();
         Console.WriteLine($"All {habit.Name} entries:");
         using (var connection = new SQLiteConnection(_connectionString))
         {
@@ -235,8 +241,9 @@ public class Tracker
 
             connection.Close();
         }
-        Console.WriteLine("--------------------------------------------------------\n");
-
+        Console.WriteLine("-------------------------------------------\n");
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
         return;
 
     }
